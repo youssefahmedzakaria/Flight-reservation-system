@@ -1,53 +1,45 @@
 ﻿using System;
 using System.Data;
+using System;
 
-public static class Program
+public class Program
 {
-    static void Main()
+    string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=EmployeeData;Integrated Security=True";
+        //string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=EmployeeData;Integrated Security=True";
+    private static Admin admin = new Admin(connectionString);
+    private static User user = new User(connectionString);
+
+    public static void Main()
     {
-        string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=EmployeeData;Integrated Security=True";
-        DBManipulation dbManipulation = new DBManipulation(connectionString);
+        bool exit = false;
 
-        // Insert data
-        Console.WriteLine("Inserting data...");
-        dbManipulation.Insert("test2", "name", "John Doe");
-        Console.WriteLine("Data inserted successfully.");
-
-        // Select data
-        Console.WriteLine("Selecting data...");
-        DataTable result = dbManipulation.Select("test2", "name = 'John Doe'");
-        Console.WriteLine("Data selected successfully.");
-
-        // Display selected data
-        Console.WriteLine("Selected data:");
-        foreach (DataRow row in result.Rows)
+        while (!exit)
         {
-            Console.WriteLine($"Name: {row["name"]}");
+            Console.WriteLine("=== Flight Management System ===");
+            Console.WriteLine("1. Admin");
+            Console.WriteLine("2. User");
+            Console.WriteLine("0. Exit");
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            Console.WriteLine();
+
+            switch (choice)
+            {
+                case "1":
+                    AdminMenu();
+                    break;
+                case "2":
+                    UserMenu();
+                    break;
+                case "0":
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+            Console.WriteLine();
         }
-
-        // Update data
-        Console.WriteLine("Updating data...");
-        dbManipulation.Update("test2", "name", "Jane Smith", "name = 'John Doe'");
-        Console.WriteLine("Data updated successfully.");
-
-        // Select updated data
-        Console.WriteLine("Selecting updated data...");
-        result = dbManipulation.Select("test2", "name = 'Jane Smith'");
-        Console.WriteLine("Updated data selected successfully.");
-
-        // Display selected updated data
-        Console.WriteLine("Selected updated data:");
-        foreach (DataRow row in result.Rows)
-        {
-            Console.WriteLine($"Name: {row["name"]}");
-        }
-
-        // Delete data
-        Console.WriteLine("Deleting data...");
-        dbManipulation.Delete("test2", "name = 'Jane Smith'");
-        Console.WriteLine("Data deleted successfully.");
-
-        Console.WriteLine("Program completed.");
-        Console.ReadLine();
     }
 }

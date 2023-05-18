@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\C#\\Flight-reservation-system\\Flight-reservation-system.csproj": {}
+    "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Flight-reservation-system.csproj": {}
   },
   "projects": {
-    "E:\\C#\\Flight-reservation-system\\Flight-reservation-system.csproj": {
+    "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Flight-reservation-system.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\C#\\Flight-reservation-system\\Flight-reservation-system.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Flight-reservation-system.csproj",
         "projectName": "Flight-reservation-system",
-        "projectPath": "E:\\C#\\Flight-reservation-system\\Flight-reservation-system.csproj",
-        "packagesPath": "C:\\Users\\youssef zakaria\\.nuget\\packages\\",
-        "outputPath": "E:\\C#\\Flight-reservation-system\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Flight-reservation-system.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\youssef zakaria\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

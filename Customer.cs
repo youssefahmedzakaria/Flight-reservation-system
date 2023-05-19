@@ -111,9 +111,96 @@ public class Customer{
             }
         }
     }
-    // public List<Flight> GetAvailableFlights(string condition){ return;}
-    public void BookFlight(){}
+    public void BookFlight()
+    {
+        Console.Write("Enter the Flight ID: ");
+        int flightId;
+        if (!int.TryParse(Console.ReadLine(), out flightId))
+        {
+            Console.WriteLine("Invalid Flight ID. Please try again.");
+            return;
+        }
+
+    Console.Write("Enter the flight class: ");
+    string flightClass = Console.ReadLine();
+
+    Console.Write("Enter your PASS_NO: ");
+    string passNo = Console.ReadLine();
+
+    // Generate random 8-digit ticket number
+    Random random = new Random();
+    int ticketNumber = random.Next(10000000, 99999999);
+
+    // Generate random 2-digit seat number
+    int seatNumber = random.Next(1, 100);
+
+    using (SqlConnection connection = new SqlConnection(connString))
+    {
+        connection.Open();
+
+        // Check if the flight exists
+        string checkFlightQuery = "SELECT COUNT(*) FROM FLIGHT WHERE FLIGHT_ID = @FlightId";
+        SqlCommand checkFlightCommand = new SqlCommand(checkFlightQuery, connection);
+        checkFlightCommand.Parameters.AddWithValue("@FlightId", flightId);
+
+        int flightCount = (int)checkFlightCommand.ExecuteScalar();
+        if (flightCount == 0)
+        {
+            Console.WriteLine("Flight not found. Please enter a valid Flight ID.");
+            return;
+        }
+
+        // Check if the PASS_NO exists in the CUSTOMER table
+        string checkPassNoQuery = "SELECT COUNT(*) FROM CUSTOMER WHERE PASS_NO = @PassNo";
+        SqlCommand checkPassNoCommand = new SqlCommand(checkPassNoQuery, connection);
+        checkPassNoCommand.Parameters.AddWithValue("@PassNo", passNo);
+
+        int passNoCount = (int)checkPassNoCommand.ExecuteScalar();
+        if (passNoCount == 0)
+        {
+            Console.WriteLine("Passenger not found. Please enter a valid PASS_NO.");
+            return;
+        }
+
+        // Check if the TRANSACTION already exists in the TICKET or PAYMENT tables
+        string checkTransactionQuery = "SELECT COUNT(*) FROM TICKET WHERE [TRANSACTION] = 'cash' OR EXISTS " +
+                                       "(SELECT 1 FROM PAYMENT WHERE [TRANSACTION] = 'cash')";
+        SqlCommand checkTransactionCommand = new SqlCommand(checkTransactionQuery, connection);
+
+        int transactionCount = (int)checkTransactionCommand.ExecuteScalar();
+        if (transactionCount < 0)
+        {
+            Console.WriteLine("Method dont exist. Please try again later.");
+            return;
+        }
+
+        string insertQuery = "INSERT INTO TICKET (TICKET_NO, PASS_NO, FLIGHT_ID, SEAT, CLASS, [TRANSACTION]) " +
+                             "VALUES (@TicketNo, @PassNo, @FlightId, @Seat, @Class, 'cash')";
+
+        SqlCommand command = new SqlCommand(insertQuery, connection);
+
+        // Set parameter values
+        command.Parameters.AddWithValue("@TicketNo", ticketNumber);
+        command.Parameters.AddWithValue("@PassNo", passNo);
+        command.Parameters.AddWithValue("@FlightId", flightId);
+        command.Parameters.AddWithValue("@Seat", seatNumber);
+        command.Parameters.AddWithValue("@Class", flightClass);
+
+        Console.WriteLine($"successfully reserved ticket");    
+        Console.WriteLine($"Ticket Number: {ticketNumber}");
+        Console.WriteLine($"Seat Number: {seatNumber}");
+        Console.WriteLine($"Flight ID: {flightId}");
+        Console.WriteLine($"FLight Class: {flightClass}");
+        Console.WriteLine($"Payment method: Cash");
+        Console.WriteLine();    
+        }
+    }
+
+
+
+
     public void CancelFlight(){}
+    
     public void AvailableFlights()
     {
     Console.WriteLine("=== Available Flights ===");
@@ -122,7 +209,7 @@ public class Customer{
     {
         connection.Open();
 
-        string selectQuery = "SELECT DESTINATION, ARR_TIMESTAMP, DEP_TIMESTAMP, SOURCE FROM FLIGHT";
+        string selectQuery = "SELECT DESTINATION, ARR_TIMESTAMP, DEP_TIMESTAMP, SOURCE, FLIGHT_ID FROM FLIGHT";
 
         SqlCommand command = new SqlCommand(selectQuery, connection);
 
@@ -134,12 +221,14 @@ public class Customer{
                 DateTime arrivalTimestamp = reader.GetDateTime(1);
                 DateTime departureTimestamp = reader.GetDateTime(2);
                 string source = reader.GetString(3);
+                int flightId = reader.GetInt32(4);
 
 
                 Console.WriteLine($"Source: {source}");
                 Console.WriteLine($"Destination: {destination}");
                 Console.WriteLine($"Departure Time: {departureTimestamp}");
                 Console.WriteLine($"Arrival Time: {arrivalTimestamp}");
+                Console.WriteLine($"flight ID: {flightId}");
                 Console.WriteLine();
                 }
             }
@@ -233,7 +322,6 @@ public class Customer{
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
-
             Console.WriteLine();
         }
     }

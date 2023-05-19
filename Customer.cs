@@ -32,7 +32,7 @@ public class Customer{
 
         Console.Write("Enter Gender (M/F): ");
         ConsoleKeyInfo keyInfo = Console.ReadKey();
-        char gender = char.ToUpper(keyInfo.KeyChar); 
+        gender = char.ToUpper(keyInfo.KeyChar);
         Console.WriteLine();
 
         Console.Write("Enter Day Of Birth: ");
@@ -114,102 +114,127 @@ public class Customer{
     // public List<Flight> GetAvailableFlights(string condition){ return;}
     public void BookFlight(){}
     public void CancelFlight(){}
-    public void UserMenu()
-{
-    bool back = false;
-
-    while (!back)
+    public void AvailableFlights()
     {
-        Console.WriteLine("=== User Menu ===");
-        if (!loggedIn)
-        {
-            Console.WriteLine("1. User Sign Up");
-            Console.WriteLine("2. User Login");
-        }
-        else
-        {
-            Console.WriteLine("3. Get Available Flights");
-            Console.WriteLine("4. Book Flight");
-            Console.WriteLine("5. Cancel Flight");
-            Console.WriteLine("6. Logout");
-        }
-        Console.WriteLine("0. Back");
-        Console.Write("Enter your choice: ");
-        string choice = Console.ReadLine();
+    Console.WriteLine("=== Available Flights ===");
 
-        Console.WriteLine();
+    using (SqlConnection connection = new SqlConnection(connString))
+    {
+        connection.Open();
 
-        switch (choice)
+        string selectQuery = "SELECT DESTINATION, ARR_TIMESTAMP, DEP_TIMESTAMP, SOURCE FROM FLIGHT";
+
+        SqlCommand command = new SqlCommand(selectQuery, connection);
+
+        using (SqlDataReader reader = command.ExecuteReader())
         {
-            case "1":
-                SignUp();
-                break;
-            case "2":
-                if (!loggedIn)
-                {
-                    LogIn();
-                }
-                else
-                {
-                    Console.WriteLine("You are already logged in.");
-                }
-                break;
-            // case "3":
-            //     if (loggedIn)
-            //     {
-            //         Console.WriteLine("Enter search condition :");
-            //         string condition = Console.ReadLine();
-            //         var availableFlights = GetAvailableFlights(condition);
-            //         foreach (var flight in availableFlights)
-            //         {
-            //             Console.WriteLine($"Flight ID: {flight.FlightId}, Source: {flight.Source}, Destination: {flight.Destination}, Departure Time: {flight.DepartureTime}, Available Seats: {flight.AvailableSeats}");
-            //         }
-            //     }
-            //     else
-            //     {
-            //         Console.WriteLine("You must log in first.");
-            //     }
-            //     break;
-            case "4":
-                if (loggedIn)
-                {
-                    BookFlight();
-                }
-                else
-                {
-                    Console.WriteLine("You must log in first.");
-                }
-                break;
-            case "5":
-                if (loggedIn)
-                {
-                    CancelFlight();
-                }
-                else
-                {
-                    Console.WriteLine("You must log in first.");
-                }
-                break;
-            case "6":
-                if (loggedIn)
-                {
-                    loggedIn = false;
-                    Console.WriteLine("Logged out successfully.");
-                }
-                else
-                {
-                    Console.WriteLine("You are not logged in.");
-                }
-                break;
-            case "0":
-                back = true;
-                break;
-            default:
-                Console.WriteLine("Invalid choice. Please try again.");
-                break;
-        }
+            while (reader.Read())
+            {
+                string destination = reader.GetString(0);
+                DateTime arrivalTimestamp = reader.GetDateTime(1);
+                DateTime departureTimestamp = reader.GetDateTime(2);
+                string source = reader.GetString(3);
 
-        Console.WriteLine();
+
+                Console.WriteLine($"Source: {source}");
+                Console.WriteLine($"Destination: {destination}");
+                Console.WriteLine($"Departure Time: {departureTimestamp}");
+                Console.WriteLine($"Arrival Time: {arrivalTimestamp}");
+                Console.WriteLine();
+                }
+            }
+        }
     }
-}
+    public void UserMenu()
+    {
+        bool back = false;
+
+        while (!back)
+        {
+            Console.WriteLine("=== User Menu ===");
+            if (!loggedIn)
+            {
+                Console.WriteLine("1. User Sign Up");
+                Console.WriteLine("2. User Login");
+            }
+            else
+            {
+                Console.WriteLine("3. Get Available Flights");
+                Console.WriteLine("4. Book Flight");
+                Console.WriteLine("5. Cancel Flight");
+                Console.WriteLine("6. Logout");
+            }
+            Console.WriteLine("0. Back");
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            Console.WriteLine();
+
+            switch (choice)
+            {
+                case "1":
+                    SignUp();
+                    break;
+                case "2":
+                    if (!loggedIn)
+                    {
+                        LogIn();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You are already logged in.");
+                    }
+                    break;
+                case "3":
+                    if (loggedIn)
+                    {
+                        AvailableFlights();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You must log in first.");
+                    }
+                    break;
+                case "4":
+                    if (loggedIn)
+                    {
+                        BookFlight();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You must log in first.");
+                    }
+                    break;
+                case "5":
+                    if (loggedIn)
+                    {
+                        CancelFlight();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You must log in first.");
+                    }
+                    break;
+                case "6":
+                    if (loggedIn)
+                    {
+                        loggedIn = false;
+                        Console.WriteLine("Logged out successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You are not logged in.");
+                    }
+                    break;
+                case "0":
+                    back = true;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+
+            Console.WriteLine();
+        }
+    }
 }

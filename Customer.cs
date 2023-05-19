@@ -199,7 +199,41 @@ public class Customer{
 
 
 
-    public void CancelFlight(){}
+public void CancelFlight()
+{
+    Console.Write("Enter the Ticket Number: ");
+    int ticketNumber;
+    if (!int.TryParse(Console.ReadLine(), out ticketNumber))
+    {
+        Console.WriteLine("Invalid Ticket Number. Please try again.");
+        return;
+    }
+
+    using (SqlConnection connection = new SqlConnection(connString))
+    {
+        connection.Open();
+
+        // Check if the ticket exists
+        string checkTicketQuery = "SELECT COUNT(*) FROM TICKET WHERE TICKET_NO = @TicketNo";
+        SqlCommand checkTicketCommand = new SqlCommand(checkTicketQuery, connection);
+        checkTicketCommand.Parameters.AddWithValue("@TicketNo", ticketNumber);
+
+        int ticketCount = (int)checkTicketCommand.ExecuteScalar();
+        if (ticketCount == 0)
+        {
+            Console.WriteLine("Ticket not found. Please enter a valid Ticket Number.");
+            return;
+        }
+
+        // Delete the ticket
+        string deleteQuery = "DELETE FROM TICKET WHERE TICKET_NO = @TicketNo";
+        SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection);
+        deleteCommand.Parameters.AddWithValue("@TicketNo", ticketNumber);
+
+        int rowsAffected = deleteCommand.ExecuteNonQuery();
+        Console.WriteLine($"Ticket cancelled");
+    }
+}
     
     public void AvailableFlights()
     {

@@ -109,7 +109,6 @@ public class Admin
             {
                 Console.WriteLine("Login successful!");
                 loggedIn = true;
-                // Perform any additional tasks after successful login
             }
             else
             {
@@ -117,7 +116,36 @@ public class Admin
             }
         }
     }
-    public void UpdatingUserDetails(){}
+    public void UpdatingCustomerDetails(){
+        Console.Write("Enter Passport number: ");
+        string PassNum = Console.ReadLine();
+        Console.Write("Enter Phone number: ");
+        string PhoneNum = Console.ReadLine();
+        Console.Write("Enter Email: ");
+        string Email = Console.ReadLine();
+        Console.Write("Enter Username: ");
+        string Username = Console.ReadLine();
+
+        using (SqlConnection connection = new SqlConnection(connString))
+        {
+            connection.Open();
+
+            string updateQuery = "UPDATE CUSTOMER SET PHONE_NO = @PhoneNum, EMAIL = @Email, USERNAME = @Username WHERE PASS_NO = @PassNum";
+
+            SqlCommand command = new SqlCommand(updateQuery, connection);
+
+            // Set parameter values
+            command.Parameters.AddWithValue("@PhoneNum", PhoneNum);
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@Username", Username);
+            command.Parameters.AddWithValue("@PassNum", PassNum);
+
+            // Execute the update query
+            int rowsAffected = command.ExecuteNonQuery();
+
+            Console.WriteLine($"{rowsAffected} row(s) updated.");
+        }
+    }
     public void AddAirCraft()
     {
         Console.Write("Enter Aircraft ID: ");
@@ -321,7 +349,8 @@ public class Admin
                 Console.WriteLine("4. Update Aircraft Details");
                 Console.WriteLine("5. Add Flight");
                 Console.WriteLine("6. Update Flight Details");
-                Console.WriteLine("7. Logout");
+                Console.WriteLine("7. Update Customer Details");
+                Console.WriteLine("8. Logout");
             }
             Console.WriteLine("0. Back");
             Console.Write("Enter your choice: ");
@@ -350,6 +379,9 @@ public class Admin
                     UpdateFlightDetails();
                     break;
                 case "7":
+                    UpdatingCustomerDetails();
+                    break;
+                case "8":
                     LogOut();
                     break;                        
                 case "0":

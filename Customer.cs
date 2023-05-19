@@ -1,6 +1,6 @@
 using System;
 using System.Data.SqlClient;
-public class User{
+public class Customer{
     public string PassNo;
     public char gender;
     public string DOB;
@@ -11,8 +11,9 @@ public class User{
     public string lastName;
     public string Username;
     public string connString;
+    bool loggedIn = false;
 
-    public User(string conString){
+    public Customer(string conString){
         PassNo ="";
         gender =' ';
         DOB = "";
@@ -80,14 +81,42 @@ public class User{
             Console.WriteLine($"{rowsAffected} row(s) inserted.");
         }
     }
-    public void LogIn(){}
+    public void LogIn(){
+        Console.Write("Enter Username: ");
+        string username = Console.ReadLine();
+
+        Console.Write("Enter PassportNum as password: ");
+        string password = Console.ReadLine();
+
+        using (SqlConnection connection = new SqlConnection(connString))
+        {
+            connection.Open();
+
+            string selectQuery = "SELECT COUNT(*) FROM CUSTOMER WHERE USERNAME = @Username AND PASS_NO = @Password";
+
+            SqlCommand command = new SqlCommand(selectQuery, connection);
+            command.Parameters.AddWithValue("@Username", username);
+            command.Parameters.AddWithValue("@Password", password);
+
+            int matchingRecordsCount = (int)command.ExecuteScalar();
+
+            if (matchingRecordsCount > 0)
+            {
+                Console.WriteLine("Login successful!");
+                loggedIn = true;
+            }
+            else
+            {
+                Console.WriteLine("Invalid username or password. Login failed.");
+            }
+        }
+    }
     // public List<Flight> GetAvailableFlights(string condition){ return;}
     public void BookFlight(){}
     public void CancelFlight(){}
     public void UserMenu()
 {
     bool back = false;
-    bool loggedIn = false;
 
     while (!back)
     {
@@ -119,8 +148,6 @@ public class User{
                 if (!loggedIn)
                 {
                     LogIn();
-                    loggedIn = true;
-                    Console.WriteLine("Login successful!");
                 }
                 else
                 {

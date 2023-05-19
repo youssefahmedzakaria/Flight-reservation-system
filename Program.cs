@@ -2,10 +2,10 @@
 
 public class Program
 {
-    //private static string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=flightSystem;Integrated Security=True";
-    private static string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True";
+    private static string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=flightSystem;Integrated Security=True";
+    // private static string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True";
     private static Admin admin = new Admin(connectionString);
-    private static User user = new User(connectionString);
+    private static Customer customer = new Customer(connectionString);
 
     public static void Main()
     {
@@ -28,7 +28,7 @@ public class Program
                     admin.AdminMenu();
                     break;
                 case "2":
-                    user.UserMenu();
+                    customer.UserMenu();
                     break;
                 case "0":
                     exit = true;

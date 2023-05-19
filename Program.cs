@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Data;
-using System;
 
 public class Program
 {
-    string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=EmployeeData;Integrated Security=True";
-        //string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=EmployeeData;Integrated Security=True";
+    private static string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=flightSystem;Integrated Security=True";
     private static Admin admin = new Admin(connectionString);
     private static User user = new User(connectionString);
 
@@ -27,10 +24,10 @@ public class Program
             switch (choice)
             {
                 case "1":
-                    AdminMenu();
+                    admin.AdminMenu();
                     break;
                 case "2":
-                    UserMenu();
+                    user.UserMenu();
                     break;
                 case "0":
                     exit = true;

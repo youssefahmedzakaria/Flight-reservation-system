@@ -1,7 +1,16 @@
-public class Admin {
+public class Admin {    
+    public int AdminId;
+    public string Role;
+    public string PhoneNo;
+    public string Email ;
+    public string Password;
+    public string FirstName ;
+    public string LastName ;
+    public string Username ;
+
+    
     public void SignUp();
     public void LogIn();
-
     public void UpdatingUserDetails();
     public void AddAirCraft();
     public void UpdateAirCraftDetails();

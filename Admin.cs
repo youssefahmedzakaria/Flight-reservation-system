@@ -299,68 +299,72 @@ public class Admin
         loggedIn = false;
     }
 
-    public void AdminMenu()
+ public void AdminMenu()
+{
+    while (true)
     {
-        bool back = false;
-
-        while (!back)
+        Console.WriteLine("=== Admin Menu ===");
+        if (!loggedIn)
         {
-            Console.WriteLine("=== Admin Menu ===");
-            if (!loggedIn)
-            {
-                Console.WriteLine("1. Admin Sign Up");
-                Console.WriteLine("2. Admin Login");
-            }
-            else
-            {
-                Console.WriteLine("3. Add Aircraft");
-                Console.WriteLine("4. Update Aircraft Details");
-                Console.WriteLine("5. Add Flight");
-                Console.WriteLine("6. Update Flight Details");
-                Console.WriteLine("7. Update Customer Details");
-                Console.WriteLine("8. Logout");
-            }
-            Console.WriteLine("0. Back");
-            Console.Write("Enter your choice: ");
-            string choice = Validate.IsValidChoice();
-
-            Console.WriteLine();
-
-            switch (choice)
-            {
-                case "1":
-                    SignUp();
-                    break;
-                case "2":
-                    LogIn();
-                    break;
-                case "3":
-                    AddAirCraft();
-                    break;
-                case "4":
-                    UpdateAirCraftDetails();
-                    break;
-                case "5":
-                    AddFlight();
-                    break;
-                case "6":
-                    UpdateFlightDetails();
-                    break;
-                case "7":
-                    UpdatingCustomerDetails();
-                    break;
-                case "8":
-                    LogOut();
-                    break;                        
-                case "0":
-                    back = true;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-            }
-
-            Console.WriteLine();
+            Console.WriteLine("1. Admin Sign Up");
+            Console.WriteLine("2. Admin Login");
         }
+        else
+        {
+            Console.WriteLine("3. Add Aircraft");
+            Console.WriteLine("4. Update Aircraft Details");
+            Console.WriteLine("5. Add Flight");
+            Console.WriteLine("6. Update Flight Details");
+            Console.WriteLine("7. Update Customer Details");
+            Console.WriteLine("8. Logout");
+        }
+        Console.WriteLine("0. Back");
+        Console.Write("Enter your choice: ");
+        string choice = Validate.IsValidChoice();
+        Console.WriteLine();
+
+        if (!loggedIn && (choice == "3" || choice == "4" || choice == "5" || choice == "6" || choice == "7" || choice == "8"))
+        {
+            Console.WriteLine("You need to be logged in to access this option.");
+            Console.WriteLine();
+            continue;
+        }
+
+        switch (choice)
+        {
+            case "1":
+                SignUp();
+                break;
+            case "2":
+                LogIn();
+                break;
+            case "3":
+                AddAirCraft();
+                break;
+            case "4":
+                UpdateAirCraftDetails();
+                break;
+            case "5":
+                AddFlight();
+                break;
+            case "6":
+                UpdateFlightDetails();
+                break;
+            case "7":
+                UpdatingCustomerDetails();
+                break;
+            case "8":
+                LogOut();
+                break;
+            case "0":
+                return;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
+
+        Console.WriteLine();
     }
+}
+
 }

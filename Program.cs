@@ -2,8 +2,8 @@
 
 public class Program
 {
-    //private static string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=flightSystem;Integrated Security=True";
-    private static string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True";
+    private static string connectionString = "Data Source=DESKTOP-LTOVK9O;Initial Catalog=flightSystem;Integrated Security=True";
+    // private static string connectionString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True";
     private static Admin admin = new Admin(connectionString);
     private static Customer customer = new Customer(connectionString);
     private static Validate validate = new Validate();

@@ -236,95 +236,73 @@ public void CancelFlight()
             }
         }
     }
-    public void UserMenu()
+   public void UserMenu()
+{
+    while (true)
     {
-        bool back = false;
-
-        while (!back)
+        Console.WriteLine("=== User Menu ===");
+        if (!loggedIn)
         {
-            Console.WriteLine("=== User Menu ===");
-            if (!loggedIn)
-            {
-                Console.WriteLine("1. User Sign Up");
-                Console.WriteLine("2. User Login");
-            }
-            else
-            {
-                Console.WriteLine("3. Get Available Flights");
-                Console.WriteLine("4. Book Flight");
-                Console.WriteLine("5. Cancel Flight");
-                Console.WriteLine("6. Logout");
-            }
-            Console.WriteLine("0. Back");
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
-
-            Console.WriteLine();
-
-            switch (choice)
-            {
-                case "1":
-                    SignUp();
-                    break;
-                case "2":
-                    if (!loggedIn)
-                    {
-                        LogIn();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You are already logged in.");
-                    }
-                    break;
-                case "3":
-                    if (loggedIn)
-                    {
-                        AvailableFlights();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You must log in first.");
-                    }
-                    break;
-                case "4":
-                    if (loggedIn)
-                    {
-                        BookFlight();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You must log in first.");
-                    }
-                    break;
-                case "5":
-                    if (loggedIn)
-                    {
-                        CancelFlight();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You must log in first.");
-                    }
-                    break;
-                case "6":
-                    if (loggedIn)
-                    {
-                        loggedIn = false;
-                        Console.WriteLine("Logged out successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You are not logged in.");
-                    }
-                    break;
-                case "0":
-                    back = true;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-            }
-            Console.WriteLine();
+            Console.WriteLine("1. User Sign Up");
+            Console.WriteLine("2. User Login");
         }
+        else
+        {
+            Console.WriteLine("3. Get Available Flights");
+            Console.WriteLine("4. Book Flight");
+            Console.WriteLine("5. Cancel Flight");
+            Console.WriteLine("6. Logout");
+        }
+        Console.WriteLine("0. Back");
+        Console.Write("Enter your choice: ");
+        string choice = Console.ReadLine();
+        Console.WriteLine();
+
+        if (!loggedIn && (choice == "3" || choice == "4" || choice == "5" || choice == "6"))
+        {
+            Console.WriteLine("You must log in first.");
+            Console.WriteLine();
+            continue;
+        }
+
+        switch (choice)
+        {
+            case "1":
+                SignUp();
+                break;
+            case "2":
+                if (!loggedIn)
+                    LogIn();
+                else
+                    Console.WriteLine("You are already logged in.");
+                break;
+            case "3":
+                if (loggedIn)
+                    AvailableFlights();
+                break;
+            case "4":
+                if (loggedIn)
+                    BookFlight();
+                break;
+            case "5":
+                if (loggedIn)
+                    CancelFlight();
+                break;
+            case "6":
+                if (loggedIn)
+                {
+                    loggedIn = false;
+                    Console.WriteLine("Logged out successfully.");
+                }
+                break;
+            case "0":
+                return;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
+        Console.WriteLine();
     }
+}
+
 }

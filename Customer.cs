@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 public class Customer{
     public string PassNo;
     public char gender;
-    public string DOB;
+    public DateTime DOB;
     public int AGE;
     public string PhoneNumber;
     public string Email;
@@ -16,7 +16,7 @@ public class Customer{
     public Customer(string conString){
         PassNo ="";
         gender =' ';
-        DOB = "";
+        DOB = DateTime.MinValue;
         AGE = 0;
         PhoneNumber = "";
         Email = "";
@@ -27,34 +27,23 @@ public class Customer{
     }
      public void SignUp()
     {
-        Console.Write("Enter Passport Number: ");
-        PassNo = Console.ReadLine();
+        PassNo = Validate.IsValidPassportNumber();
 
-        Console.Write("Enter Gender (M/F): ");
-        ConsoleKeyInfo keyInfo = Console.ReadKey();
-        gender = char.ToUpper(keyInfo.KeyChar);
-        Console.WriteLine();
+        gender = Validate.IsValidGender();
 
-        Console.Write("Enter Day Of Birth: ");
-        DOB = Console.ReadLine();
+        DOB = Validate.IsValidDateOfBirth();
 
-        Console.Write("Enter Age: ");
-        AGE = int.Parse(Console.ReadLine());
+        AGE = Validate.IsValidAge();
 
-        Console.Write("Enter PhoneNumber: ");
-        PhoneNumber = Console.ReadLine();
+        PhoneNumber = Validate.IsValidPhoneNum();
 
-        Console.Write("Enter Email: ");
-        Email = Console.ReadLine();
+        Email = Validate.IsValidEmail();
 
-        Console.Write("Enter First Name: ");
-        firstName = Console.ReadLine();
+        firstName = Validate.IsValidName("First Name");
 
-        Console.Write("Enter Last Name: ");
-        lastName = Console.ReadLine();
+        lastName = Validate.IsValidName("Last Name");
 
-        Console.Write("Enter Username: ");
-        Username = Console.ReadLine();
+        Username = Validate.IsValidName("UserName");
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -82,11 +71,11 @@ public class Customer{
         }
     }
     public void LogIn(){
-        Console.Write("Enter Username: ");
-        string username = Console.ReadLine();
 
-        Console.Write("Enter PassportNum as password: ");
-        string password = Console.ReadLine();
+        string username = Validate.IsValidName("UserName");
+
+
+        string password = Validate.IsValidPassportNumber();
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -113,26 +102,19 @@ public class Customer{
     }
     public void BookFlight()
     {
-        Console.Write("Enter the Flight ID: ");
-        int flightId;
-        if (!int.TryParse(Console.ReadLine(), out flightId))
-        {
-            Console.WriteLine("Invalid Flight ID. Please try again.");
-            return;
-        }
+    int FlightId = Validate.IsValidId("Flight");
 
-    Console.Write("Enter the flight class: ");
-    string flightClass = Console.ReadLine();
+    string flightClass = Validate.IsValidString("Class");
 
-    Console.Write("Enter your PASS_NO: ");
-    string passNo = Console.ReadLine();
+    string PassNo = Validate.IsValidPassportNumber();
 
     // Generate random 8-digit ticket number
     Random random = new Random();
-    int ticketNumber = random.Next(10000000, 99999999);
+    int TicketNo = random.Next(10000000, 99999999);
 
     // Generate random 2-digit seat number
-    int seatNumber = random.Next(1, 100);
+    int Seatnum = random.Next(1, 100);
+    string Seat = Seatnum.ToString();
 
     using (SqlConnection connection = new SqlConnection(connString))
     {
@@ -141,24 +123,12 @@ public class Customer{
         // Check if the flight exists
         string checkFlightQuery = "SELECT COUNT(*) FROM FLIGHT WHERE FLIGHT_ID = @FlightId";
         SqlCommand checkFlightCommand = new SqlCommand(checkFlightQuery, connection);
-        checkFlightCommand.Parameters.AddWithValue("@FlightId", flightId);
+        checkFlightCommand.Parameters.AddWithValue("@FlightId", FlightId);
 
         int flightCount = (int)checkFlightCommand.ExecuteScalar();
         if (flightCount == 0)
         {
             Console.WriteLine("Flight not found. Please enter a valid Flight ID.");
-            return;
-        }
-
-        // Check if the PASS_NO exists in the CUSTOMER table
-        string checkPassNoQuery = "SELECT COUNT(*) FROM CUSTOMER WHERE PASS_NO = @PassNo";
-        SqlCommand checkPassNoCommand = new SqlCommand(checkPassNoQuery, connection);
-        checkPassNoCommand.Parameters.AddWithValue("@PassNo", passNo);
-
-        int passNoCount = (int)checkPassNoCommand.ExecuteScalar();
-        if (passNoCount == 0)
-        {
-            Console.WriteLine("Passenger not found. Please enter a valid PASS_NO.");
             return;
         }
 
@@ -180,34 +150,32 @@ public class Customer{
         SqlCommand command = new SqlCommand(insertQuery, connection);
 
         // Set parameter values
-        command.Parameters.AddWithValue("@TicketNo", ticketNumber);
-        command.Parameters.AddWithValue("@PassNo", passNo);
-        command.Parameters.AddWithValue("@FlightId", flightId);
-        command.Parameters.AddWithValue("@Seat", seatNumber);
+        command.Parameters.AddWithValue("@TicketNo", TicketNo);
+        command.Parameters.AddWithValue("@PassNo", PassNo);
+        command.Parameters.AddWithValue("@FlightId", FlightId);
+        command.Parameters.AddWithValue("@Seat", Seat);
         command.Parameters.AddWithValue("@Class", flightClass);
 
+        int rowsAffected = command.ExecuteNonQuery();
+
+        Console.WriteLine();    
         Console.WriteLine($"successfully reserved ticket");    
-        Console.WriteLine($"Ticket Number: {ticketNumber}");
-        Console.WriteLine($"Seat Number: {seatNumber}");
-        Console.WriteLine($"Flight ID: {flightId}");
+        Console.WriteLine($"Ticket Number: {TicketNo}");
+        Console.WriteLine($"Seat Number: {Seat}");
+        Console.WriteLine($"Flight ID: {FlightId}");
         Console.WriteLine($"FLight Class: {flightClass}");
         Console.WriteLine($"Payment method: Cash");
+        Console.WriteLine($"{rowsAffected} row(s) updated.");
         Console.WriteLine();    
         }
+
+        //int rowsAffected = command.ExecuteNonQuery();
     }
-
-
-
 
 public void CancelFlight()
 {
     Console.Write("Enter the Ticket Number: ");
-    int ticketNumber;
-    if (!int.TryParse(Console.ReadLine(), out ticketNumber))
-    {
-        Console.WriteLine("Invalid Ticket Number. Please try again.");
-        return;
-    }
+    int ticketNumber = Validate.IsValidTicketNumber();
 
     using (SqlConnection connection = new SqlConnection(connString))
     {

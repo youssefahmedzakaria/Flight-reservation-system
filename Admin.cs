@@ -34,29 +34,22 @@ public class Admin
 
     public void SignUp()
     {
-        Console.Write("Enter Admin ID: ");
-        AdminId = int.Parse(Console.ReadLine());
 
-        Console.Write("Enter Role: ");
-        Role = Console.ReadLine();
+        AdminId = Validate.IsValidId("Admin");;
+        
+        Role = Validate.IsValidRole();
 
-        Console.Write("Enter Phone Number: ");
-        PhoneNo = Console.ReadLine();
+        PhoneNo = Validate.IsValidPhoneNum();
 
-        Console.Write("Enter Email: ");
-        Email = Console.ReadLine();
+        Email = Validate.IsValidEmail();
 
-        Console.Write("Enter Password: ");
-        Password = Console.ReadLine();
+        Password = Validate.IsValidPassword();
 
-        Console.Write("Enter First Name: ");
-        FirstName = Console.ReadLine();
+        FirstName = Validate.IsValidName("First Name");
 
-        Console.Write("Enter Last Name: ");
-        LastName = Console.ReadLine();
+        LastName = Validate.IsValidName("Last Name");
 
-        Console.Write("Enter Username: ");
-        Username = Console.ReadLine();
+        Username = Validate.IsValidName("Username");
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -87,11 +80,9 @@ public class Admin
     
     public void LogIn()
     {
-        Console.Write("Enter Username: ");
-        string username = Console.ReadLine();
+        string username = Validate.IsValidName("Username");
 
-        Console.Write("Enter Password: ");
-        string password = Console.ReadLine();
+        string password = Validate.IsValidPassword();
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -116,15 +107,18 @@ public class Admin
             }
         }
     }
+    
+    
     public void UpdatingCustomerDetails(){
-        Console.Write("Enter Passport number: ");
-        string PassNum = Console.ReadLine();
-        Console.Write("Enter Phone number: ");
-        string PhoneNum = Console.ReadLine();
-        Console.Write("Enter Email: ");
-        string Email = Console.ReadLine();
-        Console.Write("Enter Username: ");
-        string Username = Console.ReadLine();
+
+        string PassNum = Validate.IsValidPassportNumber();
+
+        string PhoneNum = Validate.IsValidPhoneNum();
+
+        string Email = Validate.IsValidEmail();
+
+        string Username = Validate.IsValidName("Username");
+
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -148,29 +142,21 @@ public class Admin
     }
     public void AddAirCraft()
     {
-        Console.Write("Enter Aircraft ID: ");
-        int aircraftId = int.Parse(Console.ReadLine());
+        int aircraftId = Validate.IsValidId("Aircraft");
 
-        Console.Write("Enter Admin ID: ");
-        int adminId = int.Parse(Console.ReadLine());
+        int adminId = Validate.IsValidId("Admin");
 
-        Console.Write("Enter Airline Name: ");
-        string airlineName = Console.ReadLine();
+        string airlineName = Validate.IsValidString("AirLine name");
 
-        Console.Write("Enter Flight ID: ");
-        int flightId = int.Parse(Console.ReadLine());
+        int flightId = Validate.IsValidId("Flight");
 
-        Console.Write("Enter Make: ");
-        string make = Console.ReadLine();
+        string make = Validate.IsValidString("Make");
 
-        Console.Write("Enter Model: ");
-        string model = Console.ReadLine();
+        string model = Validate.IsValidString("Model");
 
-        Console.Write("Enter Max Weight: ");
-        int maxWeight = int.Parse(Console.ReadLine());
+        int maxWeight = Validate.IsValidMaxWeight();
 
-        Console.Write("Enter Capacity: ");
-        int capacity = int.Parse(Console.ReadLine());
+        int capacity = Validate.IsValidCapacity();
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -199,20 +185,15 @@ public class Admin
 
     public void UpdateAirCraftDetails()
     {
-        Console.Write("Enter Aircraft ID: ");
-        int aircraftId = int.Parse(Console.ReadLine());
+        int aircraftId = Validate.IsValidId("Aircraft");
 
-        Console.Write("Enter Make: ");
-        string make = Console.ReadLine();
+        string make = Validate.IsValidString("Make");
 
-        Console.Write("Enter Model: ");
-        string model = Console.ReadLine();
+        string model = Validate.IsValidString("Model");
 
-        Console.Write("Enter Max Weight: ");
-        int maxWeight = int.Parse(Console.ReadLine());
+        int maxWeight = Validate.IsValidMaxWeight();
 
-        Console.Write("Enter Capacity: ");
-        int capacity = int.Parse(Console.ReadLine());
+        int capacity = Validate.IsValidCapacity();
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -237,32 +218,23 @@ public class Admin
     }
     public void AddFlight()
     {
-        Console.Write("Enter Flight ID: ");
-        int flightId = int.Parse(Console.ReadLine());
+        int flightId = Validate.IsValidId("Flight");
 
-        Console.Write("Enter Aircraft ID: ");
-        int aircraftId = int.Parse(Console.ReadLine());
+        int aircraftId = Validate.IsValidId("AirCraft");;
 
-        Console.Write("Enter Admin ID: ");
-        int adminId = int.Parse(Console.ReadLine());
+        int adminId = Validate.IsValidId("Admin");;
 
-        Console.Write("Enter Duration: ");
-        int duration = int.Parse(Console.ReadLine());
+        int duration = Validate.IsValidDuration();
 
-        Console.Write("Enter Destination: ");
-        string destination = Console.ReadLine();
+        string destination = Validate.IsValidString("Destination");
 
-        Console.Write("Enter Arrival Timestamp (yyyy-MM-dd HH:mm:ss): ");
-        DateTime arrivalTimestamp = DateTime.ParseExact(Console.ReadLine(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+        DateTime arrivalTimestamp = Validate.ISValidTimestamp("Arrival");
 
-        Console.Write("Enter Departure Timestamp (yyyy-MM-dd HH:mm:ss): ");
-        DateTime departureTimestamp = DateTime.ParseExact(Console.ReadLine(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+        DateTime departureTimestamp = Validate.ISValidTimestamp("Depature");
 
-        Console.Write("Enter Flight Number: ");
-        int flightNumber = int.Parse(Console.ReadLine());
+        int flightNumber = Validate.IsValidFlightNumber();
 
-        Console.Write("Enter Source: ");
-        string source = Console.ReadLine();
+        string source = Validate.IsValidString("Source");
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -290,20 +262,16 @@ public class Admin
         }
     }
     public void UpdateFlightDetails(){
-        Console.Write("Enter Flight ID: ");
-        int flightId = int.Parse(Console.ReadLine());
 
-        Console.Write("Enter Duration: ");
-        string Duration = Console.ReadLine();
+        int flightId = Validate.IsValidId("Flight");
 
-        Console.Write("Enter Destination: ");
-        string Destination = Console.ReadLine();
+        int Duration = Validate.IsValidDuration();
 
-        Console.Write("Enter Arrival Timestamp (yyyy-MM-dd HH:mm:ss): ");
-        DateTime arrivalTimestamp = DateTime.ParseExact(Console.ReadLine(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+        string Destination = Validate.IsValidString("Destination");
 
-        Console.Write("Enter Departure Timestamp (yyyy-MM-dd HH:mm:ss): ");
-        DateTime departureTimestamp = DateTime.ParseExact(Console.ReadLine(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+        DateTime arrivalTimestamp = Validate.ISValidTimestamp("Arrival");
+
+        DateTime departureTimestamp = Validate.ISValidTimestamp("Departure");
 
         using (SqlConnection connection = new SqlConnection(connString))
         {
@@ -354,7 +322,7 @@ public class Admin
             }
             Console.WriteLine("0. Back");
             Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            string choice = Validate.IsValidChoice();
 
             Console.WriteLine();
 

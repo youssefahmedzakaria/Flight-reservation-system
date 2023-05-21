@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+WRQa2VxnZn0zp7byN43N4m4f4v5XIxCQuIm4kZRju9aDEV+z7LPVBfC3hWMX6d7U8JBq6ZD95+rZdCx9j45FQ==",
+  "dgSpecHash": "diutax+IHlUu9rc0X5US/U1A9c8nSh2Nt7+TUU99oZoJJapzFVYpczYgP99rleCqf1ZCPHflm2vc7H2OSC9F8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Flight-reservation-system.csproj",
+  "projectFilePath": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

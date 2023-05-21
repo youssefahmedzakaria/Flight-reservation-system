@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj": {}
+    "E:\\C#\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj": {
+    "E:\\C#\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj",
+        "projectUniqueName": "E:\\C#\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj",
         "projectName": "Flight-reservation-system",
-        "projectPath": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\OneDrive\\Desktop\\faculaty projects\\DatabaseAssignment\\Flight-reservation-system\\Console_Application\\obj\\",
+        "projectPath": "E:\\C#\\Flight-reservation-system\\Console_Application\\Flight-reservation-system.csproj",
+        "packagesPath": "C:\\Users\\youssef zakaria\\.nuget\\packages\\",
+        "outputPath": "E:\\C#\\Flight-reservation-system\\Console_Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\youssef zakaria\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

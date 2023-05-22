@@ -43,7 +43,7 @@ namespace GUI
             string capacity = textBox8.Text;
 
             // Create a connection to the database
-            using (SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True"))
+            using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {
                 // Create a parameterized SQL query
                 string sqlQuery = "INSERT INTO AIRCRAFT (CRAFT_ID, ADMIN_ID, AIRLINE_NAME, FLIGHT_ID, MAKE, MODEL, MAX_WEIGHT, CAPACITY)" +

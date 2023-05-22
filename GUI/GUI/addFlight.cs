@@ -46,7 +46,7 @@ namespace GUI
             string flightNumber = textBox6.Text;
             string source = textBox7.Text;
 
-            using (SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True"))
+            using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {
                 sqlConnection.Open();
 

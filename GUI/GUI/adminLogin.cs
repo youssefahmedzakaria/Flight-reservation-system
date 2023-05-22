@@ -44,7 +44,7 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connString = "Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True"; // Replace with your actual connection string
+           
             string u = textBox2.Text; // Replace with the username entered by the user
             string password = textBox1.Text; // Replace with the password entered by the user
 
@@ -54,7 +54,7 @@ namespace GUI
                 return; // Exit the method
             }
 
-            using (SqlConnection connection = new SqlConnection(connString))
+            using (SqlConnection connection = new SqlConnection(Program.connectionString))
             {
                 connection.Open();
 

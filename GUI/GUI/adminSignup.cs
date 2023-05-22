@@ -53,7 +53,7 @@ namespace GUI
             string username = textBox7.Text;
 
             // Create a connection to the database
-            using (SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True"))
+            using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {
                 // Create a parameterized SQL query
                 string sqlQuery = "INSERT INTO ADMIN (ADMIN_ID, ROLE, PHONE_NO, EMAIL, PASSWORD, F_NAME, L_NAME, USERNAME)" +

@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Console_Application",
-    "\\GUI"
+    "\\GUI",
+    "\\GUI\\GUI"
   ],
-  "SelectedNode": "\\GUI",
   "PreviewInSolutionExplorer": false
 }

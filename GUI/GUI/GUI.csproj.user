@@ -16,6 +16,24 @@
     <Compile Update="adminSignup.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="BookFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CancelFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="customerLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="customerMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="customerSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UpdateCustomerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="updateFlight.cs">
       <SubType>Form</SubType>
     </Compile>

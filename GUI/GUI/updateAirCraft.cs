@@ -31,7 +31,7 @@ namespace GUI
             string maxWeight = textBox4.Text;
             string capacity = textBox5.Text;
 
-            using (SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True"))
+            using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {
                 sqlConnection.Open();
 

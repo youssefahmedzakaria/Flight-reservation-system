@@ -20,7 +20,7 @@ namespace GUI
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True");
+            SqlConnection sqlConnection = new SqlConnection(Program.connectionString);
         }
 
         private void button1_Click(object sender, EventArgs e)

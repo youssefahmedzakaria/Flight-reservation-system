@@ -51,7 +51,9 @@ namespace GUI
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            UpdateCustomerDetails updateCustomerDetails = new UpdateCustomerDetails();
+            updateCustomerDetails.Show();
+            this.Hide();
         }
 
         private void button6_Click(object sender, EventArgs e)

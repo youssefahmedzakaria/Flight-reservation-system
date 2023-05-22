@@ -59,7 +59,7 @@ namespace GUI
             // Perform additional operations or logic using the obtained data
 
             // Example: Update the data in the database table
-            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-5TIKJIL;Initial Catalog=flightSystem;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(Program.connectionString))
             {
                 connection.Open();
 

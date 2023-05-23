@@ -127,7 +127,7 @@ namespace GUI
                 MessageBox.Show(value + "Name must contain only letters. Please try again.");
                 return null;
             }
-
+            return inputValue;
             return value;
         }
 

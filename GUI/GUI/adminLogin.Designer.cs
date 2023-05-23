@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class adminLogin
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
             label1 = new Label();
             label2 = new Label();
             textBox1 = new TextBox();
@@ -72,23 +75,27 @@
             textBox2.TabIndex = 3;
             // 
             // button1
+            label1.BackColor = Color.Transparent;
+            label2.BackColor = Color.Transparent;
             // 
+            button1.BackColor = Color.LightBlue;
             button1.Location = new Point(233, 374);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 4;
             button1.Text = "Login";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.LightCoral;
             button2.Location = new Point(367, 374);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 5;
             button2.Text = "Back";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
             // 
             // adminLogin
@@ -116,5 +123,17 @@
         private TextBox textBox2;
         private Button button1;
         private Button button2;
+        
+
+
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
+
     }
 }

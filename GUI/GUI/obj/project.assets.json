@@ -11,6 +11,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.ReportViewer.WinForms/10.0.40219.1": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.ReportViewer.WinForms.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.ReportViewer.WinForms.dll": {}
+        }
+      },
       "Microsoft.Win32.Registry/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -165,6 +174,18 @@
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.ReportViewer.WinForms/10.0.40219.1": {
+      "sha512": "jUPFTKTQ+HHr2uttku6fKoxTR4nsQfQEaTqABtopWPHRvRjKHTSKfexMqW0SwnWToQIAG5u2T5w/9j0iGW44mQ==",
+      "type": "package",
+      "path": "microsoft.reportviewer.winforms/10.0.40219.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Microsoft.ReportViewer.WinForms.dll",
+        "microsoft.reportviewer.winforms.10.0.40219.1.nupkg.sha512",
+        "microsoft.reportviewer.winforms.nuspec"
       ]
     },
     "Microsoft.Win32.Registry/4.7.0": {
@@ -466,6 +487,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Microsoft.ReportViewer.WinForms >= 10.0.40219.1",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -508,6 +530,10 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Microsoft.ReportViewer.WinForms": {
+            "target": "Package",
+            "version": "[10.0.40219.1, )"
+          },
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.5, )"
@@ -535,5 +561,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.ReportViewer.WinForms 10.0.40219.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.ReportViewer.WinForms",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
 }

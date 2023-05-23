@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class BookFlight
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -46,6 +50,9 @@
             label1.Size = new Size(51, 15);
             label1.TabIndex = 1;
             label1.Text = "Flight ID";
+            label1.BackColor = Color.Transparent;
+
+
             // 
             // label2
             // 
@@ -55,6 +62,9 @@
             label2.Size = new Size(34, 15);
             label2.TabIndex = 3;
             label2.Text = "Class";
+            label2.BackColor = Color.Transparent;
+
+
             label2.TextAlign = ContentAlignment.TopCenter;
             // 
             // label3
@@ -65,6 +75,9 @@
             label3.Size = new Size(99, 15);
             label3.TabIndex = 5;
             label3.Text = "Passport Number";
+            label3.BackColor = Color.Transparent;
+
+
             // 
             // textBox1
             // 
@@ -137,5 +150,14 @@
         private TextBox textBox3;
         private Button button1;
         private Button button2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
+
     }
 }

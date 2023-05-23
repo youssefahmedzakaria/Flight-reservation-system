@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class customerLogin
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+    
             button2 = new Button();
             button1 = new Button();
             textBox2 = new TextBox();
@@ -83,6 +87,8 @@
             label2.Size = new Size(57, 15);
             label2.TabIndex = 7;
             label2.Text = "password";
+            label2.BackColor = Color.Transparent;
+
             // 
             // label1
             // 
@@ -91,6 +97,8 @@
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
             label1.TabIndex = 6;
+            label1.BackColor = Color.Transparent;
+
             label1.Text = "username";
             // 
             // customerLogin
@@ -118,5 +126,14 @@
         private TextBox textBox1;
         private Label label2;
         private Label label1;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class updateAirCraft
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             label1 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -49,6 +53,8 @@
             label1.Name = "label1";
             label1.Size = new Size(60, 20);
             label1.TabIndex = 0;
+            label1.BackColor = Color.Transparent;
+
             label1.Text = "Craft ID";
             // 
             // textBox1
@@ -73,6 +79,8 @@
             label2.Size = new Size(45, 20);
             label2.TabIndex = 2;
             label2.Text = "Make";
+            label2.BackColor = Color.Transparent;
+
             // 
             // textBox3
             // 
@@ -89,6 +97,8 @@
             label3.Size = new Size(52, 20);
             label3.TabIndex = 4;
             label3.Text = "Model";
+            label3.BackColor = Color.Transparent;
+
             // 
             // textBox4
             // 
@@ -105,6 +115,8 @@
             label4.Size = new Size(88, 20);
             label4.TabIndex = 6;
             label4.Text = "Max Weight";
+            label4.BackColor = Color.Transparent;
+
             // 
             // textBox5
             // 
@@ -121,6 +133,8 @@
             label6.Size = new Size(66, 20);
             label6.TabIndex = 8;
             label6.Text = "Capacity";
+            label6.BackColor = Color.Transparent;
+            ;
             // 
             // button1
             // 
@@ -181,5 +195,13 @@
         private Label label6;
         private Button button1;
         private Button button2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

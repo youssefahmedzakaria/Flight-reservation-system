@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class adminSignup
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             textBox8 = new TextBox();
             textBox7 = new TextBox();
             label9 = new Label();
@@ -73,6 +77,9 @@
             label9.Size = new Size(80, 20);
             label9.TabIndex = 31;
             label9.Text = "First Name";
+            label9.BackColor = Color.Transparent;
+
+
             // 
             // label8
             // 
@@ -82,6 +89,9 @@
             label8.Size = new Size(79, 20);
             label8.TabIndex = 30;
             label8.Text = "Last Name";
+            label8.BackColor = Color.Transparent;
+
+
             // 
             // label7
             // 
@@ -91,6 +101,9 @@
             label7.Size = new Size(78, 20);
             label7.TabIndex = 29;
             label7.Text = "UserName";
+            label7.BackColor = Color.Transparent;
+
+
             // 
             // textBox6
             // 
@@ -108,6 +121,9 @@
             label6.Size = new Size(39, 20);
             label6.TabIndex = 27;
             label6.Text = "Role";
+            label6.BackColor = Color.Transparent;
+
+
             // 
             // textBox5
             // 
@@ -125,6 +141,9 @@
             label5.Size = new Size(108, 20);
             label5.TabIndex = 25;
             label5.Text = "Phone Number";
+            label5.BackColor = Color.Transparent;
+
+
             // 
             // textBox4
             // 
@@ -142,6 +161,9 @@
             label4.Size = new Size(52, 20);
             label4.TabIndex = 23;
             label4.Text = "E-mail";
+            label4.BackColor = Color.Transparent;
+
+
             // 
             // textBox3
             // 
@@ -159,6 +181,9 @@
             label3.Size = new Size(70, 20);
             label3.TabIndex = 21;
             label3.Text = "Password";
+            label3.BackColor = Color.Transparent;
+
+
             // 
             // textBox2
             // 
@@ -175,6 +200,9 @@
             label2.Name = "label2";
             label2.Size = new Size(0, 20);
             label2.TabIndex = 19;
+            label2.BackColor = Color.Transparent;
+
+
             // 
             // textBox1
             // 
@@ -193,6 +221,8 @@
             label1.Size = new Size(72, 20);
             label1.TabIndex = 17;
             label1.Text = "Admin ID";
+            label1.BackColor = Color.Transparent;
+
             // 
             // button1
             // 
@@ -202,6 +232,8 @@
             button1.Size = new Size(86, 31);
             button1.TabIndex = 35;
             button1.Text = "Register";
+            button1.BackColor = Color.LightBlue; // Set the background color
+            button1.ForeColor = Color.White; // Set the foreground color
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -213,6 +245,8 @@
             button2.Size = new Size(86, 31);
             button2.TabIndex = 36;
             button2.Text = "Back";
+            button1.BackColor = Color.Red; // Set the background color
+            button1.ForeColor = Color.White; // Set the foreground color
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -269,5 +303,13 @@
         private Label label1;
         private Button button1;
         private Button button2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

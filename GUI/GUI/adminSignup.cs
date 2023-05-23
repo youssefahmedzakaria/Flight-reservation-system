@@ -42,17 +42,62 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Get the values from the textboxes
-            string adminId = textBox1.Text;
-            string role = textBox6.Text;
-            string phoneNo = textBox5.Text;
-            string email = textBox3.Text;
-            string password = textBox4.Text;
-            string firstName = textBox2.Text;
-            string lastName = textBox8.Text;
-            string username = textBox7.Text;
+            string adminId = validation.IsValidId("Admin", textBox1.Text);
+            string role = validation.IsValidRole(textBox6.Text);
+            string phoneNo = validation.IsValidPhoneNum(textBox5.Text);
+            string email = validation.IsValidEmail(textBox3.Text);
+            string password = validation.IsValidPassword(textBox4.Text);
+            string firstName = validation.IsValidName("First", textBox2.Text);
+            string lastName = validation.IsValidName("Last", textBox8.Text);
+            string username = validation.IsValidString("Username", textBox7.Text);
 
-            // Create a connection to the database
+            if (string.IsNullOrEmpty(adminId))
+            {
+                textBox1.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(role))
+            {
+                textBox6.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(phoneNo))
+            {
+                textBox5.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(email))
+            {
+                textBox3.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                textBox4.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(firstName))
+            {
+                textBox2.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(lastName))
+            {
+                textBox8.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(username))
+            {
+                textBox7.Focus();
+                return;
+            }
             using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {
                 // Create a parameterized SQL query

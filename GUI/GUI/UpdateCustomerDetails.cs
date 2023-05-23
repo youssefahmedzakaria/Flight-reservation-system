@@ -20,11 +20,23 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string PassNum = textBox1.Text;
-            string PhoneNum = textBox2.Text; ;
-            string Email = textBox3.Text; ;
-            string Username = textBox4.Text; ;
+            string PassNum = validation.IsValidPassportNumber(textBox1.Text);
+            string PhoneNum = validation.IsValidPhoneNum(textBox2.Text);
+            string Email = validation.IsValidString("Email", textBox3.Text);
+            string Username = validation.IsValidName("Username", textBox4.Text);
 
+            if (string.IsNullOrEmpty(PassNum) || string.IsNullOrEmpty(PhoneNum) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Username))
+            {
+                if (string.IsNullOrEmpty(PassNum))
+                    textBox1.Focus();
+                else if (string.IsNullOrEmpty(PhoneNum))
+                    textBox2.Focus();
+                else if (string.IsNullOrEmpty(Email))
+                    textBox3.Focus();
+                else if (string.IsNullOrEmpty(Username))
+                    textBox4.Focus();
+
+            }
             using (SqlConnection connection = new SqlConnection(Program.connectionString))
             {
                 connection.Open();

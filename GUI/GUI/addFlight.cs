@@ -36,15 +36,144 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string flightId = textBox1.Text;
-            string aircraftId = textBox2.Text;
-            string adminId = textBox3.Text;
-            string duration = textBox4.Text;
-            string destination = textBox5.Text;
-            string arrivalTimestamp = dateTimePicker1.Value.ToString();
-            string departureTimestamp = dateTimePicker2.Value.ToString();
-            string flightNumber = textBox6.Text;
-            string source = textBox7.Text;
+            validation validation = new validation();
+            string flightId = validation.IsValidId("Flight", textBox1.Text);
+            string aircraftId = validation.IsValidId("Aircraft", textBox2.Text);
+            string adminId = validation.IsValidId("Admin", textBox3.Text);
+            int duration = validation.IsValidDuration(textBox4.Text);
+            string destination = validation.IsValidString("Destination", textBox5.Text);
+            DateTime arrivalTimestamp = validation.IsValidTimestamp("Arrival", dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss tt"));
+            DateTime departureTimestamp = validation.IsValidTimestamp("Departure", dateTimePicker2.Value.ToString("yyyy-MM-dd hh:mm:ss tt"));
+            int flightNumber = validation.IsValidFlightNumber(textBox6.Text);
+            string source = validation.IsValidString("Source", textBox7.Text);
+
+            // Check if any of the fields are null or empty
+            if (string.IsNullOrWhiteSpace(flightId))
+            {
+                MessageBox.Show("Please enter a valid Flight ID.");
+                textBox1.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(aircraftId))
+            {
+                MessageBox.Show("Please enter a valid Aircraft ID.");
+                textBox2.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(adminId))
+            {
+                MessageBox.Show("Please enter a valid Admin ID.");
+                textBox3.Focus();
+                return; // Exit the method
+            }
+
+            if (duration <= 0)
+            {
+                MessageBox.Show("Please enter a valid Duration.");
+                textBox4.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(destination))
+            {
+                MessageBox.Show("Please enter a valid Destination.");
+                textBox5.Focus();
+                return; // Exit the method
+            }
+
+            if (arrivalTimestamp == DateTime.MinValue)
+            {
+                MessageBox.Show("Please enter a valid Arrival Timestamp.");
+                dateTimePicker1.Focus();
+                return; // Exit the method
+            }
+
+            if (departureTimestamp == DateTime.MinValue)
+            {
+                MessageBox.Show("Please enter a valid Departure Timestamp.");
+                dateTimePicker2.Focus();
+                return; // Exit the method
+            }
+
+            if (flightNumber <= 0)
+            {
+                MessageBox.Show("Please enter a valid Flight Number.");
+                textBox6.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                MessageBox.Show("Please enter a valid Source.");
+                textBox7.Focus();
+                return; // Exit the method
+            }
+
+            // Check if any of the fields are null or empty
+            if (string.IsNullOrWhiteSpace(flightId))
+            {
+                MessageBox.Show("Please enter a valid Flight ID.");
+                textBox1.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(aircraftId))
+            {
+                MessageBox.Show("Please enter a valid Aircraft ID.");
+                textBox2.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(adminId))
+            {
+                MessageBox.Show("Please enter a valid Admin ID.");
+                textBox3.Focus();
+                return; // Exit the method
+            }
+
+            if (duration <= 0)
+            {
+                MessageBox.Show("Please enter a valid Duration.");
+                textBox4.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(destination))
+            {
+                MessageBox.Show("Please enter a valid Destination.");
+                textBox5.Focus();
+                return; // Exit the method
+            }
+
+            if (arrivalTimestamp == DateTime.MinValue)
+            {
+                MessageBox.Show("Please enter a valid Arrival Timestamp.");
+                dateTimePicker1.Focus();
+                return; // Exit the method
+            }
+
+            if (departureTimestamp == DateTime.MinValue)
+            {
+                MessageBox.Show("Please enter a valid Departure Timestamp.");
+                dateTimePicker2.Focus();
+                return; // Exit the method
+            }
+
+            if (flightNumber <= 0 )
+            {
+                MessageBox.Show("Please enter a valid Flight Number.");
+                textBox6.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                MessageBox.Show("Please enter a valid Source.");
+                textBox7.Focus();
+                return; // Exit the method
+            }
 
             using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {

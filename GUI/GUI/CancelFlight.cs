@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace GUI
 {
@@ -13,7 +14,13 @@ namespace GUI
         private void button1_Click(object sender, EventArgs e)
         {
             Console.Write("Enter the Ticket Number: ");
-            string ticketNumber = textBox1.Text;
+            int ticketNumber = validation.IsValidFlightNumber(textBox1.Text);
+
+            if (ticketNumber == 0)
+            {
+                textBox1.Focus();
+                return;
+            }
 
             using (SqlConnection connection = new SqlConnection(Program.connectionString))
             {

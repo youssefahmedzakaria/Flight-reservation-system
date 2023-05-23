@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,15 +51,43 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string flightId = textBox1.Text;
-            string duration = textBox2.Text;
-            string destination = textBox3.Text;
-            string arrivalTimestamp = dateTimePicker1.Value.ToString();
-            string departureTimestamp = dateTimePicker2.Value.ToString();
+            validation validation = new validation();
 
-            // Perform additional operations or logic using the obtained data
+            string flightId = validation.IsValidId("Flight", textBox1.Text);
+            if (flightId == null)
+            {
+                textBox1.Focus(); 
+                return;
+            }
 
-            // Example: Update the data in the database table
+            int duration = validation.IsValidDuration(textBox2.Text);
+            if (duration <= 0)
+            {
+                textBox2.Focus(); 
+                return; 
+            }
+
+            string destination = validation.IsValidString("Destination", textBox3.Text);
+            if (destination == null)
+            {
+                textBox3.Focus();
+                return; 
+            }
+
+            DateTime arrivalTimestamp = validation.IsValidTimestamp("Arrival", dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss tt"));
+            if (arrivalTimestamp == DateTime.MinValue)
+            {
+                dateTimePicker1.Focus(); 
+                return;
+            }
+
+            DateTime departureTimestamp = validation.IsValidTimestamp("Departure", dateTimePicker2.Value.ToString("yyyy-MM-dd hh:mm:ss tt"));
+            if (departureTimestamp == DateTime.MinValue)
+            {
+                dateTimePicker2.Focus(); 
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(Program.connectionString))
             {
                 connection.Open();
@@ -83,6 +112,8 @@ namespace GUI
                 this.Hide();
             }
         }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {

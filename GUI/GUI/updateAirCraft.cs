@@ -25,11 +25,25 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string aircraftId = textBox1.Text;
-            string make = textBox2.Text;
-            string model = textBox3.Text;
-            string maxWeight = textBox4.Text;
-            string capacity = textBox5.Text;
+            string aircraftId = validation.IsValidId("AirCraft", textBox1.Text);
+            string make = validation.IsValidString("Make",textBox2.Text);
+            string model = validation.IsValidString("Model", textBox2.Text);
+            int maxWeight = validation.IsValidMaxWeight(textBox4.Text);
+            int capacity = validation.IsValidCapacity(textBox5.Text);
+            if (string.IsNullOrEmpty(aircraftId) || string.IsNullOrEmpty(make) || string.IsNullOrEmpty(model) || maxWeight == 0 || capacity == 0)
+            {
+                if (string.IsNullOrEmpty(aircraftId))
+                    textBox1.Focus();
+                else if (string.IsNullOrEmpty(make))
+                    textBox2.Focus();
+                else if (string.IsNullOrEmpty(model))
+                    textBox3.Focus();
+                else if (maxWeight == 0)
+                    textBox4.Focus();
+                else if (capacity == 0)
+                    textBox5.Focus();
+                return;
+            }
 
             using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))
             {

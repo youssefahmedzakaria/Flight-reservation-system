@@ -33,14 +33,72 @@ namespace GUI
         private void button1_Click(object sender, EventArgs e)
         {
             // Get the values from the textboxes
-            string aircraftId = textBox1.Text;
-            string adminId = textBox2.Text;
-            string airlineName = textBox3.Text;
-            string flightId = textBox4.Text;
-            string make = textBox5.Text;
-            string model = textBox6.Text;
-            string maxWeight = textBox7.Text;
-            string capacity = textBox8.Text;
+            validation validation = new validation();
+            string aircraftId = validation.IsValidId("Aircraft", textBox1.Text);
+            string adminId = validation.IsValidId("Admin", textBox2.Text);
+            string airlineName = validation.IsValidString("Airline Name", textBox3.Text);
+            string flightId = validation.IsValidId("Flight", textBox4.Text);
+            string make = validation.IsValidString("Make", textBox5.Text);
+            string model = validation.IsValidString("Model", textBox6.Text);
+            int maxWeight = validation.IsValidMaxWeight(textBox7.Text);
+            int capacity = validation.IsValidCapacity(textBox8.Text);
+
+            // Check if any of the fields are null or empty
+            if (string.IsNullOrWhiteSpace(aircraftId))
+            {
+                MessageBox.Show("Please enter a valid Aircraft ID.");
+                textBox1.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(adminId))
+            {
+                MessageBox.Show("Please enter a valid Admin ID.");
+                textBox2.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(airlineName))
+            {
+                MessageBox.Show("Please enter a valid Airline Name.");
+                textBox3.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(flightId))
+            {
+                MessageBox.Show("Please enter a valid Flight ID.");
+                textBox4.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(make))
+            {
+                MessageBox.Show("Please enter a valid Make.");
+                textBox5.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(model))
+            {
+                MessageBox.Show("Please enter a valid Model.");
+                textBox6.Focus();
+                return; // Exit the method
+            }
+
+            if (maxWeight <= 0)
+            {
+                MessageBox.Show("Please enter a valid Maximum Weight.");
+                textBox7.Focus();
+                return; // Exit the method
+            }
+
+            if (capacity <= 0)
+            {
+                MessageBox.Show("Please enter a valid Capacity.");
+                textBox8.Focus();
+                return; // Exit the method
+            }
 
             // Create a connection to the database
             using (SqlConnection sqlConnection = new SqlConnection(Program.connectionString))

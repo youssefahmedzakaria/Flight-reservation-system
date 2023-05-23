@@ -44,11 +44,11 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            string u = textBox2.Text; // Replace with the username entered by the user
-            string password = textBox1.Text; // Replace with the password entered by the user
 
-            if (string.IsNullOrWhiteSpace(u) || string.IsNullOrWhiteSpace(password))
+            string username = validation.IsValidName(textBox2.Text, "User ");
+            string password = validation.IsValidPassword(textBox1.Text);
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please enter both username and password.");
                 return; // Exit the method
@@ -61,7 +61,7 @@ namespace GUI
                 string selectQuery = "SELECT COUNT(*) FROM ADMIN WHERE USERNAME = @Username AND PASSWORD = @Password";
 
                 SqlCommand command = new SqlCommand(selectQuery, connection);
-                command.Parameters.AddWithValue("@Username", u);
+                command.Parameters.AddWithValue("@Username", username);
                 command.Parameters.AddWithValue("@Password", password);
 
                 int matchingRecordsCount = (int)command.ExecuteScalar();

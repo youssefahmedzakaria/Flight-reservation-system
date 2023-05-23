@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Runtime.ConstrainedExecution;
 
 namespace GUI
 {
@@ -26,13 +27,30 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string FlightId = textBox1.Text;
+            string FlightId = validation.IsValidId("Flight ",textBox1.Text);
 
-            string flightClass = textBox2.Text;
+            string flightClass = validation.IsValidString("Class ", textBox2.Text);
 
-            string PassNo = textBox3.Text;
+            string PassNo = validation.IsValidPassportNumber(textBox3.Text);
+            if (string.IsNullOrWhiteSpace(FlightId))
+            {
+                textBox1.Focus();
+                return; // Exit the method
+            }
 
-            Random random = new Random();
+            if (string.IsNullOrWhiteSpace(flightClass))
+            {
+                textBox2.Focus();
+                return; // Exit the method
+            }
+
+            if (string.IsNullOrWhiteSpace(PassNo))
+            {
+                textBox3.Focus();
+                return; // Exit the method
+            }
+
+             Random random = new Random();
             int TicketNo = random.Next(10000000, 99999999);
 
             int Seatnum = random.Next(1, 100);

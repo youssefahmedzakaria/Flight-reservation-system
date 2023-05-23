@@ -14,9 +14,19 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text; // Replace with the username entered by the user
-            string password = textBox2.Text; // Replace with the password entered by the user
+            string username = validation.IsValidName("User", textBox1.Text);
+            string password = validation.IsValidPassportNumber( textBox2.Text);
+            if (string.IsNullOrEmpty(username))
+            {
+                textBox1.Focus();
+                return;
+            }
 
+            if (string.IsNullOrEmpty(password))
+            {
+                textBox2.Focus();
+                return;
+            }
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please enter both username and password.");

@@ -72,3 +72,10 @@ C:\Users\DELL\OneDrive\Desktop\faculaty projects\DatabaseAssignment\Flight-reser
 C:\Users\DELL\OneDrive\Desktop\faculaty projects\DatabaseAssignment\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.BookFlight.resources
 C:\Users\DELL\OneDrive\Desktop\faculaty projects\DatabaseAssignment\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.CancelFlight.resources
 C:\Users\DELL\OneDrive\Desktop\faculaty projects\DatabaseAssignment\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.UpdateCustomerDetails.resources
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.BookFlight.resources
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.CancelFlight.resources
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.customerLogin.resources
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.customerMenu.resources
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.customerSignUp.resources
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.UpdateCustomerDetails.resources
+E:\C#\Flight-reservation-system\GUI\GUI\bin\Debug\net6.0-windows\Microsoft.ReportViewer.WinForms.dll

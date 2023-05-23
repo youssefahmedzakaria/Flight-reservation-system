@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class updateFlight
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -50,6 +54,8 @@
             label1.Size = new Size(65, 20);
             label1.TabIndex = 0;
             label1.Text = "Flight ID";
+            label1.BackColor = Color.Transparent;
+
             // 
             // label2
             // 
@@ -59,6 +65,7 @@
             label2.Size = new Size(67, 20);
             label2.TabIndex = 1;
             label2.Text = "Duration";
+            label2.BackColor = Color.Transparent;
             label2.Click += label2_Click;
             // 
             // label3
@@ -69,6 +76,8 @@
             label3.Size = new Size(85, 20);
             label3.TabIndex = 2;
             label3.Text = "Destination";
+            label3.BackColor = Color.Transparent;
+
             label3.Click += label3_Click;
             // 
             // label4
@@ -78,6 +87,8 @@
             label4.Name = "label4";
             label4.Size = new Size(52, 20);
             label4.TabIndex = 3;
+            label4.BackColor = Color.Transparent;
+
             label4.Text = "Arrival";
             // 
             // label5
@@ -87,6 +98,8 @@
             label5.Name = "label5";
             label5.Size = new Size(76, 20);
             label5.TabIndex = 4;
+            label5.BackColor = Color.Transparent;
+
             label5.Text = "Departure";
             // 
             // textBox1
@@ -186,5 +199,13 @@
         private DateTimePicker dateTimePicker2;
         private Button button1;
         private Button button2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

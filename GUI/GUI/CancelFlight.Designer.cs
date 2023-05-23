@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class CancelFlight
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             button1 = new Button();
             label1 = new Label();
             textBox1 = new TextBox();
@@ -53,6 +57,7 @@
             label1.Size = new Size(85, 15);
             label1.TabIndex = 1;
             label1.Text = "Ticket Number";
+            label1.BackColor = Color.Transparent;
             // 
             // textBox1
             // 
@@ -92,5 +97,13 @@
         private Label label1;
         private TextBox textBox1;
         private Button button2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

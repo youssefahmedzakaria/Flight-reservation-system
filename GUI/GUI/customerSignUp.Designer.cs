@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class customerSignUp
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
             button2 = new Button();
             button1 = new Button();
             textBox8 = new TextBox();
@@ -57,6 +60,9 @@
             button2.Size = new Size(86, 30);
             button2.TabIndex = 55;
             button2.Text = "Back";
+            button2.BackColor = Color.Red;
+            button2.ForeColor = Color.Red;
+
             this.button2.Click += new System.EventHandler(this.button2_Click);
             button2.UseVisualStyleBackColor = true;
             // 
@@ -67,6 +73,8 @@
             button1.Size = new Size(88, 30);
             button1.TabIndex = 54;
             button1.Text = "Register";
+            button1.BackColor = Color.Green;
+            button1.ForeColor = Color.Green;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             button1.UseVisualStyleBackColor = true;
             // 
@@ -93,6 +101,8 @@
             label8.Size = new Size(71, 15);
             label8.TabIndex = 50;
             label8.Text = "Day Of Birth";
+            label8.BackColor = Color.Transparent;
+
             // 
             // label7
             // 
@@ -102,6 +112,8 @@
             label7.Size = new Size(28, 15);
             label7.TabIndex = 49;
             label7.Text = "Age";
+            label7.BackColor = Color.Transparent;
+
             // 
             // textBox6
             // 
@@ -118,6 +130,8 @@
             label6.Size = new Size(45, 15);
             label6.TabIndex = 47;
             label6.Text = "Gender";
+            label6.BackColor = Color.Transparent;
+
             // 
             // textBox5
             // 
@@ -134,6 +148,8 @@
             label5.Size = new Size(88, 15);
             label5.TabIndex = 45;
             label5.Text = "Phone Number";
+            label5.BackColor = Color.Transparent;
+
             // 
             // textBox4
             // 
@@ -150,6 +166,8 @@
             label4.Size = new Size(41, 15);
             label4.TabIndex = 43;
             label4.Text = "E-mail";
+            label4.BackColor = Color.Transparent;
+
             // 
             // textBox2
             // 
@@ -165,6 +183,8 @@
             label2.Name = "label2";
             label2.Size = new Size(63, 15);
             label2.TabIndex = 39;
+            label2.BackColor = Color.Transparent;
+
             label2.Text = "Last Name";
             // 
             // textBox1
@@ -182,6 +202,8 @@
             label1.Size = new Size(64, 15);
             label1.TabIndex = 37;
             label1.Text = "First Name";
+            label1.BackColor = Color.Transparent;
+
             // 
             // label3
             // 
@@ -189,7 +211,9 @@
             label3.Location = new Point(423, 64);
             label3.Name = "label3";
             label3.Size = new Size(65, 15);
-            label3.TabIndex = 41;
+            label3.TabIndex = 41; 
+            label3.BackColor = Color.Transparent;
+
             label3.Text = "User Name";
             // 
             // textBox3
@@ -213,6 +237,8 @@
             label9.Name = "label9";
             label9.Size = new Size(99, 15);
             label9.TabIndex = 56;
+            label9.BackColor = Color.Transparent;
+
             label9.Text = "Passport Number";
             // 
             // customerSignUp
@@ -268,5 +294,13 @@
         private TextBox textBox3;
         private TextBox textBox9;
         private Label label9;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

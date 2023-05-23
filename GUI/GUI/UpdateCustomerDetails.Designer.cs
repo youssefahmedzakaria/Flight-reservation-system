@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class UpdateCustomerDetails
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             textBox1 = new TextBox();
             label1 = new Label();
             textBox2 = new TextBox();
@@ -54,6 +58,8 @@
             label1.Name = "label1";
             label1.Size = new Size(99, 15);
             label1.TabIndex = 2;
+            label1.BackColor = Color.Transparent;
+
             label1.Text = "Passport Number";
             // 
             // textBox2
@@ -70,6 +76,8 @@
             label2.Name = "label2";
             label2.Size = new Size(88, 15);
             label2.TabIndex = 4;
+            label2.BackColor = Color.Transparent;
+
             label2.Text = "Phone Number";
             // 
             // textBox3
@@ -86,6 +94,8 @@
             label3.Name = "label3";
             label3.Size = new Size(36, 15);
             label3.TabIndex = 6;
+            label3.BackColor = Color.Transparent;
+
             label3.Text = "Email";
             // 
             // textBox4
@@ -102,6 +112,8 @@
             label4.Name = "label4";
             label4.Size = new Size(65, 15);
             label4.TabIndex = 8;
+            label4.BackColor = Color.Transparent;
+
             label4.Text = "User Name";
             // 
             // button1
@@ -158,5 +170,13 @@
         private Label label4;
         private Button button1;
         private Button button2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

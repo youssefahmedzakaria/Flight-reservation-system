@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class customer
     {
@@ -98,6 +100,23 @@
 
             // Fill the background with the gradient brush
             e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+        }
+
+        private void OnFormPaint(object sender, PaintEventArgs e)
+        {
+            DrawGradientBackground(e.Graphics);
+        }
+
+        private void DrawGradientBackground(Graphics g)
+        {
+            Color color1 = Color.LightSkyBlue;
+            Color color2 = Color.LightCyan;
+            Rectangle rect = this.ClientRectangle;
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(rect, color1, color2, LinearGradientMode.Vertical))
+            {
+                g.FillRectangle(brush, rect);
+            }
         }
 
         #endregion

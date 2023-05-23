@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Drawing.Drawing2D;
+
+namespace GUI
 {
     partial class addFlight
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Paint += new PaintEventHandler(adminLogin_Paint);
+
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -124,6 +128,16 @@
             label8.Size = new Size(104, 20);
             label8.TabIndex = 9;
             label8.Text = "Flight Number";
+            label1.BackColor = Color.Transparent;
+            label2.BackColor = Color.Transparent;
+            label3.BackColor = Color.Transparent;
+            label4.BackColor = Color.Transparent;
+            label5.BackColor = Color.Transparent;
+            label6.BackColor = Color.Transparent;
+            label7.BackColor = Color.Transparent;
+            label8.BackColor = Color.Transparent;
+            label9.BackColor = Color.Transparent;
+
             // 
             // label9
             // 
@@ -271,5 +285,13 @@
         private Button button2;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
+        private void adminLogin_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a linear gradient brush for the background
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightBlue, Color.LightCoral, LinearGradientMode.Vertical);
+
+            // Fill the form's background with the gradient brush
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
     }
 }

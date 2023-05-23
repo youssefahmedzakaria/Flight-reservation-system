@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -40,8 +41,10 @@ namespace GUI
             // button1
             // 
             button1.BackColor = Color.LightBlue;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.Black;
-            button1.ImageKey = "(none)";
             button1.Location = new Point(211, 75);
             button1.Name = "button1";
             button1.Size = new Size(150, 40);
@@ -53,6 +56,9 @@ namespace GUI
             // button2
             // 
             button2.BackColor = Color.LightGreen;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(211, 130);
             button2.Name = "button2";
             button2.Size = new Size(150, 40);
@@ -64,6 +70,9 @@ namespace GUI
             // button3
             // 
             button3.BackColor = Color.LightCoral;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button3.Location = new Point(211, 187);
             button3.Name = "button3";
             button3.Size = new Size(150, 40);
@@ -81,7 +90,7 @@ namespace GUI
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "admin";
-            Text = "admin";
+            Text = "Admin";
             ResumeLayout(false);
 
             // Apply gradient background
@@ -104,6 +113,18 @@ namespace GUI
         private void Form2_Load1(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void DrawGradientBackground(Graphics g)
+        {
+            Color color1 = Color.LightSkyBlue;
+            Color color2 = Color.LightCyan;
+            Rectangle rect = this.ClientRectangle;
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(rect, color1, color2, LinearGradientMode.Vertical))
+            {
+                g.FillRectangle(brush, rect);
+            }
         }
 
         #endregion

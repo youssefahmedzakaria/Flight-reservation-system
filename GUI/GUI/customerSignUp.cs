@@ -33,7 +33,7 @@ namespace GUI
             string gender = textBox6.Text; // No need to validate again as it's a free text input
             int age = validation.IsValidAge(textBox7.Text);
             string passNum = validation.IsValidString("Passport Number", textBox9.Text);
-            string dobString = validation.IsValidDateOfBirth(textBox8.Text);
+            string dobString = dateTimePicker1.Text;
 
             if (string.IsNullOrEmpty(firstName) ||
                 string.IsNullOrEmpty(lastName) ||
@@ -61,7 +61,7 @@ namespace GUI
                 else if (age == 0)
                     textBox7.Focus();
                 else if (string.IsNullOrEmpty(dobString))
-                    textBox8.Focus();
+                    dateTimePicker1.Focus();
                 else if (string.IsNullOrEmpty(passNum))
                     textBox9.Focus();
 
@@ -101,6 +101,5 @@ namespace GUI
                 }
             }
         }
-
     }
 }

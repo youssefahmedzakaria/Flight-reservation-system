@@ -26,11 +26,11 @@ namespace GUI
             this.Hide();
         }
 
-        
+
 
         private void button2_Click(object sender, EventArgs e)
         {
-            updateAirCraft updateAirCraft = new updateAirCraft();   
+            updateAirCraft updateAirCraft = new updateAirCraft();
             updateAirCraft.Show();
             this.Hide();
         }
@@ -44,7 +44,7 @@ namespace GUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            updateFlight updateFlight = new updateFlight(); 
+            updateFlight updateFlight = new updateFlight();
             updateFlight.Show();
             this.Hide();
         }
@@ -60,6 +60,13 @@ namespace GUI
         {
             mainMenu mainMenu = new mainMenu();
             mainMenu.Show();
+            this.Hide();
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            Report report = new Report();
+            report.Show();
             this.Hide();
         }
     }

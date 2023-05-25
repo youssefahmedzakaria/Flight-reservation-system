@@ -30,6 +30,9 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
+
+            
+            
             this.Paint += new PaintEventHandler(adminLogin_Paint);
             label1 = new Label();
             label2 = new Label();
@@ -37,6 +40,10 @@ namespace GUI
             textBox2 = new TextBox();
             button1 = new Button();
             button2 = new Button();
+            textBox1.TabIndex = 2;
+            textBox2.TabIndex = 1;
+            button1.TabIndex = 3;
+            button2.TabIndex = 4;
             SuspendLayout();
             // 
             // label1
@@ -45,7 +52,7 @@ namespace GUI
             label1.Location = new Point(121, 108);
             label1.Name = "label1";
             label1.Size = new Size(73, 20);
-            label1.TabIndex = 0;
+            //label1.TabIndex = 0;
             label1.Text = "username";
             label1.Click += label1_Click;
             // 
@@ -55,7 +62,7 @@ namespace GUI
             label2.Location = new Point(121, 185);
             label2.Name = "label2";
             label2.Size = new Size(72, 20);
-            label2.TabIndex = 1;
+            //label2.TabIndex = 1;
             label2.Text = "password";
             label2.Click += label2_Click;
             // 
@@ -64,7 +71,7 @@ namespace GUI
             textBox1.Location = new Point(202, 182);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 2;
+            //textBox1.TabIndex = 2;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
@@ -72,7 +79,7 @@ namespace GUI
             textBox2.Location = new Point(202, 108);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 3;
+            //textBox2.TabIndex = 3;
             // 
             // button1
             label1.BackColor = Color.Transparent;
@@ -82,7 +89,7 @@ namespace GUI
             button1.Location = new Point(233, 374);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
-            button1.TabIndex = 4;
+            //button1.TabIndex = 4;
             button1.Text = "Login";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -93,7 +100,7 @@ namespace GUI
             button2.Location = new Point(367, 374);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
-            button2.TabIndex = 5;
+            //button2.TabIndex = 5;
             button2.Text = "Back";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
@@ -123,6 +130,7 @@ namespace GUI
         private TextBox textBox2;
         private Button button1;
         private Button button2;
+
         
 
 

@@ -51,6 +51,16 @@ namespace GUI
             label1 = new Label();
             button1 = new Button();
             button2 = new Button();
+            textBox2.TabIndex = 1;
+            textBox8.TabIndex = 2;
+            textBox7.TabIndex = 3;
+            textBox5.TabIndex = 4;
+            textBox4.TabIndex = 5;
+            textBox3.TabIndex = 6;
+            textBox1.TabIndex = 7;
+            textBox6.TabIndex = 8;
+            button1.TabIndex = 9;
+            button2.TabIndex = 10;
             SuspendLayout();
             // 
             // textBox8
@@ -59,7 +69,7 @@ namespace GUI
             textBox8.Margin = new Padding(3, 4, 3, 4);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(114, 27);
-            textBox8.TabIndex = 33;
+            //textBox8.TabIndex = 33;
             // 
             // textBox7
             // 
@@ -67,7 +77,7 @@ namespace GUI
             textBox7.Margin = new Padding(3, 4, 3, 4);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(114, 27);
-            textBox7.TabIndex = 32;
+            //textBox7.TabIndex = 32;
             // 
             // label9
             // 
@@ -75,7 +85,7 @@ namespace GUI
             label9.Location = new Point(31, 144);
             label9.Name = "label9";
             label9.Size = new Size(80, 20);
-            label9.TabIndex = 31;
+            //label9.TabIndex = 31;
             label9.Text = "First Name";
             label9.BackColor = Color.Transparent;
 
@@ -87,7 +97,7 @@ namespace GUI
             label8.Location = new Point(237, 144);
             label8.Name = "label8";
             label8.Size = new Size(79, 20);
-            label8.TabIndex = 30;
+            //label8.TabIndex = 30;
             label8.Text = "Last Name";
             label8.BackColor = Color.Transparent;
 
@@ -99,7 +109,7 @@ namespace GUI
             label7.Location = new Point(33, 212);
             label7.Name = "label7";
             label7.Size = new Size(78, 20);
-            label7.TabIndex = 29;
+            //label7.TabIndex = 29;
             label7.Text = "UserName";
             label7.BackColor = Color.Transparent;
 
@@ -111,7 +121,7 @@ namespace GUI
             textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(114, 27);
-            textBox6.TabIndex = 28;
+            //textBox6.TabIndex = 28;
             // 
             // label6
             // 
@@ -119,7 +129,7 @@ namespace GUI
             label6.Location = new Point(237, 347);
             label6.Name = "label6";
             label6.Size = new Size(39, 20);
-            label6.TabIndex = 27;
+            //label6.TabIndex = 27;
             label6.Text = "Role";
             label6.BackColor = Color.Transparent;
 
@@ -131,7 +141,7 @@ namespace GUI
             textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(114, 27);
-            textBox5.TabIndex = 26;
+            //textBox5.TabIndex = 26;
             // 
             // label5
             // 
@@ -139,7 +149,7 @@ namespace GUI
             label5.Location = new Point(237, 212);
             label5.Name = "label5";
             label5.Size = new Size(108, 20);
-            label5.TabIndex = 25;
+            //label5.TabIndex = 25;
             label5.Text = "Phone Number";
             label5.BackColor = Color.Transparent;
 
@@ -151,7 +161,7 @@ namespace GUI
             textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(114, 27);
-            textBox4.TabIndex = 24;
+            //textBox4.TabIndex = 24;
             // 
             // label4
             // 
@@ -159,7 +169,7 @@ namespace GUI
             label4.Location = new Point(237, 277);
             label4.Name = "label4";
             label4.Size = new Size(52, 20);
-            label4.TabIndex = 23;
+            //label4.TabIndex = 23;
             label4.Text = "E-mail";
             label4.BackColor = Color.Transparent;
 
@@ -171,7 +181,7 @@ namespace GUI
             textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(114, 27);
-            textBox3.TabIndex = 22;
+            //textBox3.TabIndex = 22;
             // 
             // label3
             // 
@@ -179,7 +189,7 @@ namespace GUI
             label3.Location = new Point(33, 277);
             label3.Name = "label3";
             label3.Size = new Size(70, 20);
-            label3.TabIndex = 21;
+            //label3.TabIndex = 21;
             label3.Text = "Password";
             label3.BackColor = Color.Transparent;
 
@@ -191,7 +201,7 @@ namespace GUI
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(114, 27);
-            textBox2.TabIndex = 20;
+            //textBox2.TabIndex = 20;
             // 
             // label2
             // 
@@ -199,7 +209,7 @@ namespace GUI
             label2.Location = new Point(31, 144);
             label2.Name = "label2";
             label2.Size = new Size(0, 20);
-            label2.TabIndex = 19;
+            //label2.TabIndex = 19;
             label2.BackColor = Color.Transparent;
 
 
@@ -210,7 +220,7 @@ namespace GUI
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(114, 27);
-            textBox1.TabIndex = 18;
+            //textBox1.TabIndex = 18;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
@@ -219,7 +229,7 @@ namespace GUI
             label1.Location = new Point(33, 347);
             label1.Name = "label1";
             label1.Size = new Size(72, 20);
-            label1.TabIndex = 17;
+            //label1.TabIndex = 17;
             label1.Text = "Admin ID";
             label1.BackColor = Color.Transparent;
 
@@ -230,7 +240,7 @@ namespace GUI
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(86, 31);
-            button1.TabIndex = 35;
+            //button1.TabIndex = 35;
             button1.Text = "Register";
             button1.BackColor = Color.LightBlue; // Set the background color
             button1.ForeColor = Color.White; // Set the foreground color
@@ -243,7 +253,7 @@ namespace GUI
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(86, 31);
-            button2.TabIndex = 36;
+            //button2.TabIndex = 36;
             button2.Text = "Back";
             button1.BackColor = Color.Red; // Set the background color
             button1.ForeColor = Color.White; // Set the foreground color

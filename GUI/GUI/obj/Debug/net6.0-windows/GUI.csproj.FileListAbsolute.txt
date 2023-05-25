@@ -80,3 +80,4 @@ E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.customerSig
 E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.UpdateCustomerDetails.resources
 E:\C#\Flight-reservation-system\GUI\GUI\bin\Debug\net6.0-windows\Microsoft.ReportViewer.WinForms.dll
 C:\Users\DELL\OneDrive\Desktop\faculaty projects\DatabaseAssignment\Flight-reservation-system\GUI\GUI\bin\Debug\net6.0-windows\Microsoft.ReportViewer.WinForms.dll
+E:\C#\Flight-reservation-system\GUI\GUI\obj\Debug\net6.0-windows\GUI.Report.resources

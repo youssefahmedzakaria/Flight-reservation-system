@@ -32,13 +32,13 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.Paint += new PaintEventHandler(adminLogin_Paint);
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
+            button7 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -48,9 +48,10 @@ namespace GUI
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(94, 61);
+            button1.Location = new Point(82, 46);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(204, 52);
+            button1.Size = new Size(178, 39);
             button1.TabIndex = 0;
             button1.Text = "Add Aircraft";
             button1.UseVisualStyleBackColor = false;
@@ -63,9 +64,10 @@ namespace GUI
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(444, 61);
+            button2.Location = new Point(388, 46);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(204, 52);
+            button2.Size = new Size(178, 39);
             button2.TabIndex = 1;
             button2.Text = "Update Aircraft";
             button2.UseVisualStyleBackColor = false;
@@ -78,9 +80,10 @@ namespace GUI
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(94, 190);
+            button3.Location = new Point(82, 126);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(204, 52);
+            button3.Size = new Size(178, 39);
             button3.TabIndex = 2;
             button3.Text = "Add Flight";
             button3.UseVisualStyleBackColor = false;
@@ -93,9 +96,10 @@ namespace GUI
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(444, 190);
+            button4.Location = new Point(388, 126);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(204, 52);
+            button4.Size = new Size(178, 39);
             button4.TabIndex = 3;
             button4.Text = "Update Flight";
             button4.UseVisualStyleBackColor = false;
@@ -108,9 +112,10 @@ namespace GUI
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(268, 266);
+            button5.Location = new Point(82, 204);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(204, 52);
+            button5.Size = new Size(178, 39);
             button5.TabIndex = 4;
             button5.Text = "Update Customer Details";
             button5.UseVisualStyleBackColor = false;
@@ -123,29 +128,54 @@ namespace GUI
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(268, 376);
+            button6.Location = new Point(244, 280);
+            button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
-            button6.Size = new Size(204, 52);
+            button6.Size = new Size(178, 39);
             button6.TabIndex = 5;
             button6.Text = "Logout";
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.LightBlue;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button7.ForeColor = Color.White;
+            button7.Location = new Point(388, 204);
+            button7.Margin = new Padding(3, 2, 3, 2);
+            button7.Name = "button7";
+            button7.Size = new Size(178, 39);
+            button7.TabIndex = 6;
+            button7.Text = "Generate Report";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click_1;
+            // 
             // adminMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
+            Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "adminMenu";
             Text = "Admin Menu";
+            Paint += adminLogin_Paint;
             ResumeLayout(false);
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -156,6 +186,7 @@ namespace GUI
         private Button button4;
         private Button button5;
         private Button button6;
+
         private void adminLogin_Paint(object sender, PaintEventArgs e)
         {
             // Create a linear gradient brush for the background
@@ -164,5 +195,7 @@ namespace GUI
             // Fill the form's background with the gradient brush
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
+
+        private Button button7;
     }
 }
